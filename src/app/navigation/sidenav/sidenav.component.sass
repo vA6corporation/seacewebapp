@@ -1,0 +1,28 @@
+a
+    text-decoration: none
+    color: #005cbb
+
+.mat-toolbar
+    color: #005cbb
+    background: #d7e3ff
+
+.drawer
+    box-shadow: 1px 1px grey
+    overflow: hidden
+    width: 0
+    height: 100%
+    position: fixed
+    left: 87px
+    top: 0
+    background-color: #F2ECEE
+    border-radius: 0px 20px 20px 0px
+
+.wrapper:hover ~ .drawer
+    -webkit-transition: width .5s ease-in-out
+    -moz-transition: width .5s ease-in-out
+    -o-transition: width .5s ease-in-out
+    transition: width .5s ease-in-out
+    width: 200px !important
+
+.drawer:hover
+    width: 200px !important

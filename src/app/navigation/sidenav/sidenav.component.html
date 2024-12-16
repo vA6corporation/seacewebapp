@@ -1,0 +1,81 @@
+<div id="sidenav" class="d-flex flex-direction-column justify-content-between h-100">
+    <div class="py-5">
+        <a class="text-center" routerLink="/seaces">
+            <div>
+                <mat-icon>search</mat-icon>
+                <p class="mat-label-small">Busqueda</p>
+            </div>
+        </a>
+        <div class="p-1"></div>
+        <a class="text-center" routerLink="/followups">
+            <div>
+                <mat-icon>bookmark</mat-icon>
+                <p class="mat-label-small">Seguimientos</p>
+            </div>
+        </a>
+        <div class="p-1"></div>
+        <a class="text-center" routerLink="/notifications">
+            <div>
+                <mat-icon>notifications</mat-icon>
+                <p class="mat-label-small">Notificaciones</p>
+            </div>
+        </a>
+        <div class="p-1"></div>
+        <a class="text-center wrapper" routerLink="/businesses">
+            <div>
+                <mat-icon>groups</mat-icon>
+                <p class="mat-label-small">Empresas</p>
+            </div>
+        </a>
+        @if (user.isAdmin) {
+            <div class="p-1"></div>
+            <a class="text-center" routerLink="/users">
+                <div>
+                    <mat-icon>account_box</mat-icon>
+                    <p class="mat-label-small">Usuarios</p>
+                </div>
+            </a>
+        }
+        <div class="drawer">
+            <mat-action-list>
+                <button mat-list-item routerLink="/businesses">
+                    <mat-icon matListItemIcon>groups</mat-icon>
+                    <div matListItemTitle>Empresas</div>
+                </button>
+                <button mat-list-item routerLink="/partnerships">
+                    <mat-icon matListItemIcon>groups</mat-icon>
+                    <div matListItemTitle>Consorcios</div>
+                </button>
+                <button mat-list-item routerLink="/shareholders">
+                    <mat-icon matListItemIcon>groups</mat-icon>
+                    <div matListItemTitle>Accionistas</div>
+                </button>
+                <button mat-list-item routerLink="/beneficiaries">
+                    <mat-icon matListItemIcon>groups</mat-icon>
+                    <div matListItemTitle>Beneficiarios</div>
+                </button>
+                <button mat-list-item routerLink="/templates">
+                    <mat-icon matListItemIcon>text_snippet</mat-icon>
+                    <div matListItemTitle>Formatos</div>
+                </button>
+            </mat-action-list>
+        </div>
+    </div>
+     <div class="py-5">
+        @if (user.isAdmin) {
+            <a class="text-center" routerLink="/settings">
+                <div>
+                    <mat-icon>settings</mat-icon>
+                    <p class="mat-label-small">Ajustes</p>
+                </div>
+            </a>
+            <div class="p-1"></div>
+        }
+         <a class="text-center" routerLink="/logout">
+             <div>
+                 <mat-icon>logout</mat-icon>
+                 <p class="mat-label-small">Salir</p>
+             </div>
+         </a>
+     </div>
+</div>

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Usuario asignado</h2>
+<div mat-dialog-content>
+    <mat-action-list role="list">
+        <button type="button" mat-list-item (click)="onSelectUser(null)">
+            <span matListItemTitle>NINGUNO</span>
+        </button>
+        @for (user of users; track user._id) {
+        <button type="button" mat-list-item (click)="onSelectUser(user)">
+            <span matListItemTitle>{{ user.name | uppercase }}</span>
+        </button>
+        }
+    </mat-action-list>
+</div>
+<mat-dialog-actions>
+    <span class="spacer"></span>
+    <button type="button" mat-raised-button mat-dialog-close>VOLVER</button>
+</mat-dialog-actions>

@@ -1,0 +1,45 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+        <mat-accordion>
+            <mat-expansion-panel formGroupName="group">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Sobre la empresa
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre de la empresa</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Numero de celular</mat-label>
+                    <input matInput formControlName="mobileNumber">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo de empresa</mat-label>
+                    <mat-select formControlName="groupType">
+                        <mat-option value="PROVEEDOR">PROVEEDOR DEL ESTADO (INTERES EN LAS UTLIMAS CONVOCACIONES)</mat-option>
+                        <mat-option value="BROKER">CORREDOR DE SEGUROS (INTERES EN PROCESOS ADJUDICADOS)</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <span class="text-muted">ID de empresa: {{ group._id }}</span>
+                <br>
+                <span class="text-muted">Fecha de registro: {{ group.createdAt | date }}</span>
+                <br>
+                <span class="text-muted">Proxima fecha de pago: {{ group.paymentAt | date }}</span>
+                <br>
+                <span class="text-muted">Grupo de pago: {{ group.paymentGroup }}</span>
+                <br>
+                <span class="text-muted">Tipo de empresa: {{ group.groupType }}</span>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <div class="d-flex">
+            <span class="spacer"></span>
+            <div class="py-3">
+                <button type="button" mat-raised-button routerLink="/products" color="primary">CANCELAR</button>
+                <span class="divider"></span>
+                <button type="submit" [disabled]="isLoading" mat-flat-button color="primary">GUARDAR</button>
+            </div>
+        </div>
+    </form>
+</div>

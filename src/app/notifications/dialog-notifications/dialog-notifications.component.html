@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Notificaciones</h2>
+<div mat-dialog-content>
+    <mat-list role="list">
+        @for (notification of notifications; track notification._id) {
+        <mat-list-item role="listitem" class="px-0">
+            <span matListItemTitle>
+                <b>{{ notification.adjudicatedAt | date }} - {{ notification.assignedUser.name }}</b>
+            </span>
+            <div matListItemLine class="d-flex align-items-center">{{ notification.seace.nomenclature }}
+                <button mat-icon-button type="button" (click)="onClickCopy()"
+                    [cdkCopyToClipboard]="notification.seace.nomenclature">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+            </div>
+            @for (winner of notification.seace.winners; track $index) {
+            <span matListItemLine>{{ winner }}</span>
+            }
+        </mat-list-item>
+        <div class="p-2"></div>
+        }
+    </mat-list>
+</div>
+<mat-dialog-actions>
+    <span class="spacer"></span>
+    <button type="button" mat-raised-button mat-dialog-close>VOLVER</button>
+</mat-dialog-actions>

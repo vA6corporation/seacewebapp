@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup" autocomplete="off">
+    <h2 mat-dialog-title>Seguimiento</h2>
+    <div mat-dialog-content>
+        @if (users.length > 1) {
+            <mat-form-field appearance="fill">
+                <mat-label>Usuario asignado</mat-label>
+                <mat-select formControlName="assignedUserId">
+                    <mat-option [value]="null">NINGUNO</mat-option>
+                    @for (user of users; track user._id) {
+                    <mat-option [value]="user._id">{{ user.name | uppercase }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        }
+        <mat-form-field appearance="fill">
+            <mat-label>Observaciones</mat-label>
+            <input type="text" matInput formControlName="observations">
+        </mat-form-field>
+        <h2 class="mat-title-medium">Observaciones rapidas</h2>
+        <mat-chip-listbox class="mb-2">
+            @for (observation of observations; track $index) {
+            <mat-chip-option (selectionChange)="onChangeObservations(observation)">{{ observation }}</mat-chip-option>
+            }
+        </mat-chip-listbox>
+        <h2 class="mat-title-medium">Resaltar</h2>
+        <mat-chip-listbox formControlName="color">
+            @for (color of colors; track color) {
+            <mat-chip-option [value]="color.code">{{ color.name }}</mat-chip-option>
+            }
+        </mat-chip-listbox>
+    </div>
+    <mat-dialog-actions>
+        <span class="spacer"></span>
+        <button type="button" mat-raised-button mat-dialog-close color="primary">CANCELAR</button>
+        <div class="divider"></div>
+        <button type="submit" [disabled]="isLoading" mat-flat-button color="primary">GUARDAR</button>
+    </mat-dialog-actions>
+</form>

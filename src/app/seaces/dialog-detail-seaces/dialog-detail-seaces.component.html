@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Detalles</h2>
+@if (seace) {
+<div mat-dialog-content>
+    <div class="d-flex justify-content-between mb-2">
+        <span>
+            ID Convocatoria
+        </span>
+        <span>
+            {{ seace.idProcess }}
+        </span>
+    </div>
+    <div class="d-flex justify-content-between mb-1">
+        <div class="d-flex align-items-center">
+            Nomenclatura
+        </div>
+        <div class="d-flex align-items-center">
+            <button mat-icon-button type="button" (click)="onClickCopy()" [cdkCopyToClipboard]="seace.nomenclature">
+                <mat-icon>content_copy</mat-icon>
+            </button>
+            <span>
+                {{ seace.nomenclature }}
+            </span>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <span>
+            Beneficiario
+        </span>
+        <span>
+            {{ seace.convener }}
+        </span>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <span>
+            Usuario asignado
+        </span>
+        <span>
+            {{ seace.followup?.assignedUser?.name || 'NINGUNO' | uppercase }}
+        </span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="pb-3"></div>
+    <h2 class="mat-title-medium">Postor</h2>
+    <mat-list role="list">
+        @for (winner of seace.winners; track $index) {
+        <mat-list-item role="listitem" class="px-0">{{ winner }}</mat-list-item>
+        } @empty {
+        <mat-list-item role="listitem" class="px-0 text-muted text-center">SIN PORSTOR</mat-list-item>
+        }
+    </mat-list>
+    @if (seace.followup) {
+    <h2 class="mat-title-medium">Observaciones</h2>
+    <p class="text-center">{{ seace.followup.observations || 'SIN OBSERVACIONES' }}</p>
+    } @else {
+    <h2 class="mat-title-medium">Observaciones</h2>
+    <p class="text-center">SIN OBSERVACIONES</p>
+    }
+</div>
+}
+<mat-dialog-actions>
+    <span class="spacer"></span>
+    <button type="button" mat-raised-button mat-dialog-close>VOLVER</button>
+</mat-dialog-actions>
